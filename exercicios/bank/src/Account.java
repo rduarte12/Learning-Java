@@ -4,10 +4,11 @@ public class Account {
     private int balance;
     private SpecialCredit specialCredit;
 
-    public Account(String name, String password) {
+    public Account(String name, String password, int balance) {
         this.name = name;
         this.password = password;
-        this.balance = 0; // Default balance is set to 0
+        this.balance = balance;
+        this.specialCredit = new SpecialCredit(this);
     }
 
     public void setSpecialCredit(SpecialCredit specialCredit) {
