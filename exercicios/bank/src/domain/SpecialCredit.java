@@ -1,3 +1,5 @@
+package domain;
+
 public class SpecialCredit {
     private int creditLimit;
     private int creditUsed;

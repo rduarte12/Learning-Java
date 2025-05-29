@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import domain.BankService;
+import domain.SpecialCredit;
+
 public class App {
     private static final String NOME_LABEL = "Nome: ";
     private static final String SENHA_LABEL = "Senha: ";
