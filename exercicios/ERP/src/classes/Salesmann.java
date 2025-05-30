@@ -2,8 +2,8 @@ package classes;
 
 public non-sealed class Salesmann extends Employee {
 
-    public static void setSalesReport(String salesReport, int value) {
-        Account.setSalesReport(salesReport, value);  
+    public static void setSalesReport(String saleDetails, int salePrice) {
+        Account.addSaleToReport(saleDetails, salePrice); 
     }
 
     public static String getSalesReport() {
@@ -16,21 +16,4 @@ public non-sealed class Salesmann extends Employee {
         this.password = password;
         this.isAdmin = false; // Salesmen are not considered admins
     }
-
-    @Override
-    Employee newEmployee(Employee employee) {
-        if (employee instanceof Salesmann) {
-            this.name = getName();
-            this.emailObj.setEmail(getEmail());
-            this.password = getPassword();
-            this.isAdmin = false; 
-
-            return this;
-        }
-
-        return null;
-    }
-
-
-
 }

@@ -1,5 +1,6 @@
 package utils;
 
+import classes.Account;
 import classes.Clerk;
 import classes.Email;
 import classes.Employee;
@@ -79,9 +80,11 @@ public record UtilMethods() {
                 }
                 case 4 -> {
                     System.out.println("Voltando ao menu principal...");
-                default -> System.out.println(INVALID_OPTION_MSG);
+                    isRunning = false;
                 }
-                default -> System.out.println("Opção inválida. Tente novamente.");
+
+                default -> System.out.println(INVALID_OPTION_MSG);
+                
             }
         }   
     }
@@ -167,11 +170,11 @@ public record UtilMethods() {
                 case 1 -> {
                     String saleDetails = solicitarString(scanner, "Digite os detalhes da venda: ");
                     int salePrice = solicitarInteiro(scanner, "Digite o valor da venda: ");
-                    Salesmann.setSalesReport(saleDetails, salePrice);
+                    Account.addSaleToReport(saleDetails, salePrice);
                     System.out.println("Venda registrada com sucesso.");
                 }
                 case 2 -> {
-                    String salesReport = Salesmann.getFinancialReport();
+                    String salesReport = Salesmann.getSalesReport();
                     System.out.println("Relatório de vendas: " + salesReport);
                 }
                 case 3 -> {

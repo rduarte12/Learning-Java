@@ -1,6 +1,6 @@
 package classes;
 
-public abstract sealed class Employee extends Account permits Manager, Clerk, Salesmann {
+public abstract sealed class Employee permits Manager, Clerk, Salesmann {
 
     protected  String name;
     protected  String password;
@@ -39,7 +39,4 @@ public abstract sealed class Employee extends Account permits Manager, Clerk, Sa
     public void setAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
-
-    abstract Employee newEmployee(Employee employee);
-
 }

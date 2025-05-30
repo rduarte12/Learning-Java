@@ -21,17 +21,4 @@ public non-sealed class Manager extends Employee {
         this.isAdmin = true; // Managers are considered admins
     }
 
-    @Override
-    Employee newEmployee(Employee employee) {
-        if (employee instanceof Manager) {
-            this.emailObj.setEmail(getEmail());
-            this.name = getName();
-            this.password = getPassword();
-            this.isAdmin = true; // Managers are admins
-            return this;
-        }
-        return null;
-        
-    }
-
 }

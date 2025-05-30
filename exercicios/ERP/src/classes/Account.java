@@ -1,41 +1,51 @@
+// Exemplo de alteração na classe Account.java
 package classes;
 
 public class Account {
 
-    private static String financialReport;
-    private static String salesReport;
+    // Usar StringBuilder para construir os relatórios
+    private static StringBuilder financialReportContent = new StringBuilder();
+    private static StringBuilder salesReportContent = new StringBuilder();
     private static int balance;
-    public  Account() {
-        // Private constructor to prevent instantiation
-    }
 
+    // Construtor privado para evitar instanciação, já que é tudo estático
+    private Account() {}
 
     public static String getFinancialReport() {
-        return (financialReport == null ? "" : financialReport) + getBalance() + "/n";
+        // Adiciona o saldo ao final do relatório financeiro consolidado
+        return "--- Relatório Financeiro Consolidado ---\n" +
+               financialReportContent.toString() +
+               "Saldo Atual da Empresa: " + balance + "\n" +
+               "----------------------------------------\n";
     }
 
-    public static void setFinancialReport(String financialReport) {
-        Account.financialReport = (Account.financialReport == null ? "" : Account.financialReport) + "/n" + financialReport + "/n";
+    // Método para adicionar uma entrada genérica ao relatório financeiro
+    public static void addFinancialEntry(String entry) {
+        financialReportContent.append(entry).append("\n");
     }
 
     public static String getSalesReport() {
-        return salesReport;
+        return "--- Relatório de Vendas Consolidado ---\n" +
+               salesReportContent.toString() +
+               "---------------------------------------\n";
     }
 
-    public static void setSalesReport(String salesReport, int price) {
-        Account.salesReport = (Account.salesReport == null ? "" : Account.salesReport) + "/n" + salesReport + price + "/n";
-        setBalance(price);
+    // Método para adicionar uma venda ao relatório de vendas e atualizar o saldo
+    public static void addSaleToReport(String saleDetails, int price) {
+        String saleEntry = "Detalhes: " + saleDetails + ", Valor: R$" + price;
+        salesReportContent.append(saleEntry).append("\n");
+        setBalance(price); // Adiciona o valor da venda ao saldo
+        addFinancialEntry("Venda registrada: " + saleEntry); // Registra a venda também no relatório financeiro
     }
 
     public static int getBalance() {
         return balance;
     }
 
-    public static void setBalance(int balance) {
-        Account.balance += balance;
+    // Modificado para refletir adições (ou subtrações, se 'amount' for negativo)
+    public static void setBalance(int amount) {
+        Account.balance += amount;
+        // Poderia adicionar uma entrada ao relatório financeiro aqui também, se desejado
+        // addFinancialEntry("Ajuste de saldo: R$" + amount + ". Novo saldo: " + Account.balance);
     }
-
-
-
-
 }
