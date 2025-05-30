@@ -145,19 +145,17 @@ public record UtilMethods() {
                     String salesReport = Manager.getSalesRepo();
                     System.out.println("Relatório de vendas: " + salesReport);
                 }
-                case 3 -> {
-                    creatEmployee(scanner, employees); // Passa a lista de funcionários para criar um novo);
-                }
+                case 3 -> creatEmployee(scanner, employees);
                 case 4 -> {
                     System.out.println("Saindo do menu Gerente...");
                     isRunning = false;
                 }
-                default -> System.out.println("Opção inválida. Tente novamente.");
+                default -> System.out.println(INVALID_OPTION_MSG);
             }
        }
     }
 
-    public static void menuSalesman(Scanner scanner, Salesmann salesman) {
+    public static void menuSalesman(Scanner scanner, Salesmann salesmann) {
         boolean isRunning = true;
         while (isRunning) {
             System.out.println("Menu Vendedor:");
